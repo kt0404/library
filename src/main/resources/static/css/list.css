@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.head {
+	display: flex;
+}
+
+.update {
+	margin: 0 10px 0 auto;
+}
+
+.comment {
+	
+}
+
+.irai {
+	width: 170px;
+	margin-left: 150px;
+}
+
+.update-irai {
+	margin-right: 20px;
+}

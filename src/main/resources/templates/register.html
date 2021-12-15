@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+	<title>list</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<link rel="stylesheet" th:href="@{/css/register.css}">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar navbar-light bg-secondary">
+		<a th:href="@{/}" class="nav-item nav-link text-light">
+			<div>
+				<img th:src="@{/images/library.png}" height="30" width="30" />
+				<span class="title">C-BOX Library</span>
+			</div>
+		</a>
+	</nav>
+	<div class="container mt-3">
+		<div class="row justify-content-center">
+			<form th:action="@{/register}" th:object="${registerForm}" method="POST">
+				<div class="form-group">
+					<label for="name">名前</label><br />
+					<input type="text" class=”form-control” id="name" name="name" th:field="*{name}" />
+				</div>
+				<div class="form-group">
+					<label for="furigana">ふりがな</label><br />
+					<input type="text" class=”form-control” id="furigana" name="furigana" th:field="*{furigana}" />
+				</div>
+				<div class="form-group">
+					<label for="furigana">板</label><br />
+					<select name="boardId">
+						<option th:each="board : ${boardList}" th:value="${board.id}">[[${board.name}]]</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="discription">説明</label><br />
+					<textarea class=”form-control”　id="discription" name="discription" th:field="*{discription}" cols="30" rows="6"></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">登録</button>
+			</form>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

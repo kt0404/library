@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+body {
+	background-color: black;
+}
+
+.title {	
+	font-family: 'Viga', sans-serif;
+	color: white;
+}
