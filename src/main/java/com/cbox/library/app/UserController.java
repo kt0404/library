@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.cbox.library.domain.form.RegisterForm;
 import com.cbox.library.domain.model.Board;
@@ -25,19 +25,19 @@ public class UserController {
 	@Autowired
 	BoardService boardService;
 
-	@RequestMapping(path = "/", method = RequestMethod.GET)
+	@GetMapping("/")
 	public String index() {
 		return "index";
 	}
 
-	@RequestMapping(path = "/show", method = RequestMethod.GET)
+	@GetMapping("/show")
 	public String show(Model model) {
 		List<User> list = userService.findAll();
 		model.addAttribute("list", list);
 		return "list";
 	}
 
-	@RequestMapping(path = "/register", method = RequestMethod.GET)
+	@GetMapping("/register")
 	public String registerForm(Model model) {
 		List<Board> boardList = boardService.getAll();
 		model.addAttribute("boardList", boardList);
@@ -45,7 +45,7 @@ public class UserController {
 		return "register";
 	}
 
-	@RequestMapping(path = "/register", method = RequestMethod.POST)
+	@PostMapping("/register")
 	public String register(@Validated RegisterForm form, BindingResult result, Model model) {
 		if (result.hasErrors())
 			return "register";

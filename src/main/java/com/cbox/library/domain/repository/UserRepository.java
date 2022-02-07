@@ -29,7 +29,7 @@ public class UserRepository {
 		Map<String, Object> result;
 		try {
 			result = jdbc.queryForMap(sql, id);
-		} catch(IncorrectResultSizeDataAccessException e) {
+		} catch (IncorrectResultSizeDataAccessException e) {
 			result = null;
 		}
 		return result;
