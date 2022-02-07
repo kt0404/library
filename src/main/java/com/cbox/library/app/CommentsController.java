@@ -14,21 +14,21 @@ import com.cbox.library.domain.service.CommentService;
 import com.cbox.library.domain.service.RequestService;
 
 @Controller
-public class CommentController {
+public class CommentsController {
 //conto
-	@Autowired
-	CommentService commentService;
+    @Autowired
+    CommentService commentService;
 
-	@Autowired
-	RequestService requestService;
+    @Autowired
+    RequestService requestService;
 
-	@PostMapping("/comment")
-	public String comment(@Validated CommentForm form, BindingResult result,
-			@RequestHeader(name = "User-Agent") String userAgent, HttpServletRequest request) {
-		if (result.hasErrors())
-			return "redirect:/detail/" + form.getUserId();
-		String ipAddress = requestService.getClientIp(request);
-		commentService.create(form, userAgent, ipAddress);
-		return "redirect:/detail/" + form.getUserId();
-	}
+    @PostMapping("/comment")
+    public String comment(@Validated CommentForm form, BindingResult result,
+            @RequestHeader(name = "User-Agent") String userAgent, HttpServletRequest request) {
+        if (result.hasErrors())
+            return "redirect:/detail/" + form.getUserId();
+        String ipAddress = requestService.getClientIp(request);
+        commentService.create(form, userAgent, ipAddress);
+        return "redirect:/detail/" + form.getUserId();
+    }
 }

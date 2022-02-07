@@ -19,40 +19,35 @@ import com.cbox.library.domain.service.UserService;
 @Controller
 public class UserController {
 
-	@Autowired
-	UserService userService;
+    @Autowired
+    UserService userService;
 
-	@Autowired
-	BoardService boardService;
+    @Autowired
+    BoardService boardService;
 
-	@GetMapping("/")
-	public String index() {
-		return "index";
-	}
+    @GetMapping("/show")
+    public String show(Model model) {
+        List<User> list = userService.findAll();
+        model.addAttribute("list", list);
+        return "list";
+    }
 
-	@GetMapping("/show")
-	public String show(Model model) {
-		List<User> list = userService.findAll();
-		model.addAttribute("list", list);
-		return "list";
-	}
+    @GetMapping("/register")
+    public String registerForm(Model model) {
+        List<Board> boardList = boardService.getAll();
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("registerForm", new RegisterForm());
+        return "register";
+    }
 
-	@GetMapping("/register")
-	public String registerForm(Model model) {
-		List<Board> boardList = boardService.getAll();
-		model.addAttribute("boardList", boardList);
-		model.addAttribute("registerForm", new RegisterForm());
-		return "register";
-	}
-
-	@PostMapping("/register")
-	public String register(@Validated RegisterForm form, BindingResult result, Model model) {
-		if (result.hasErrors())
-			return "register";
-		userService.create(form);
-		model.addAttribute("registerForm", new RegisterForm());
-		List<Board> boardList = boardService.getAll();
-		model.addAttribute("boardList", boardList);
-		return "redirect:/show";
-	}
+    @PostMapping("/register")
+    public String register(@Validated RegisterForm form, BindingResult result, Model model) {
+        if (result.hasErrors())
+            return "register";
+        userService.create(form);
+        model.addAttribute("registerForm", new RegisterForm());
+        List<Board> boardList = boardService.getAll();
+        model.addAttribute("boardList", boardList);
+        return "redirect:/show";
+    }
 }

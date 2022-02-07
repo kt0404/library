@@ -9,6 +9,7 @@
 	<link rel="stylesheet" th:href="@{/css/index.css}">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/52b870f8e0.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<nav class="navbar navbar-light bg-secondary">
@@ -24,20 +25,21 @@
 			<img th:src="@{/images/S__15482887.jpg}" height="500" width="500" />
 		</div>
 		<div class="row">
-			<h2>Contents</h2>
-			<table>
-			    <tr>
-			        <td><a href="/show"><p>・list</p></a></td>
-			    </tr>
-			    <tr>
-			        <td><a href="/register"><p>・register</p></a></td>
-			    </tr>
-			</table>
+			<ul class="list-unstyled">
+			    <li>Contents</li>
+			    <ul>
+			        <li><a href="/show">list</a></li>
+			        <li><a href="/register">register</a></li>
+			    </ul>
+			</ul>
 		</div>
 		<div class="row">
-			<h2>Links</h2>
-			<a href="https://twitter.com/"><img th:src="@{/images/Twitter_Logo_WhiteOnBlue.png}" height="100" width="100" /></a>
-			<a href="https://discord.gg/"><img th:src="@{/images/discord.png}" height="100" width="100" /></a>
+		    <ul class="list-unstyled">
+                <li>Links</li>
+                <ul class="list-unstyled">
+                    <li><a href="https://twitter.com/"><i class="fab fa-twitter fa-3x"></i><a href="https://discord.gg/"><i class="fab fa-discord fa-3x"></i></a></a></li>
+                </ul>
+            </ul>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

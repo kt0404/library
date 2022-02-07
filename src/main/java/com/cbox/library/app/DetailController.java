@@ -16,20 +16,20 @@ import com.cbox.library.domain.service.UserService;
 @Controller
 public class DetailController {
 
-	@Autowired
-	UserService userService;
+    @Autowired
+    UserService userService;
 
-	@Autowired
-	CommentService commentService;
+    @Autowired
+    CommentService commentService;
 
-	@GetMapping("/detail/{id}")
-	public String detail(@PathVariable int id, Model model) {
-		User user = userService.findOne(id);
-		if (user == null)
-			return "redirect:/show";
-		List<Comment> commentList = commentService.getComments(id);
-		model.addAttribute("user", user);
-		model.addAttribute("commentList", commentList);
-		return "detail";
-	}
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable int id, Model model) {
+        User user = userService.findOne(id);
+        if (user == null)
+            return "redirect:/show";
+        List<Comment> commentList = commentService.getComments(id);
+        model.addAttribute("user", user);
+        model.addAttribute("commentList", commentList);
+        return "detail";
+    }
 }
