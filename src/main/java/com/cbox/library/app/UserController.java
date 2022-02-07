@@ -53,6 +53,6 @@ public class UserController {
 		model.addAttribute("registerForm", new RegisterForm());
 		List<Board> boardList = boardService.getAll();
 		model.addAttribute("boardList", boardList);
-		return "register";
+		return "redirect:/show";
 	}
 }
