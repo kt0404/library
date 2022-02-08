@@ -42,4 +42,9 @@ public class UserRepository {
 				.addValue("boardId", boardId).addValue("discription", discription));
 
 	}
+	 
+	public int updateDiscription(int userId, String discription) {
+	    String sql = "UPDATE usr SET discription = :discription WHERE id = :userId";
+	    return namedJdbc.update(sql, new MapSqlParameterSource().addValue("discription", discription).addValue("userId", userId));
+	}
 }
