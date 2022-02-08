@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cbox.library.domain.form.RegisterForm;
-import com.cbox.library.domain.form.UserUpdateForm;
+import com.cbox.library.domain.form.UserUpdateRequestForm;
 import com.cbox.library.domain.model.User;
 import com.cbox.library.domain.repository.UserRepository;
 
@@ -59,7 +59,7 @@ public class UserService {
 		return userRepository.create(name, furigana, boardId, discription);
 	}
 	
-	public int updateDiscription(UserUpdateForm form) {
+	public int updateDiscription(UserUpdateRequestForm form) {
 	    int id = form.getUserId();
 	    String discription = form.getDiscription();
 	    return userRepository.updateDiscription(id, discription);

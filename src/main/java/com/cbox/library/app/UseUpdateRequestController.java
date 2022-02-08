@@ -1,5 +1,7 @@
 package com.cbox.library.app;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,37 +14,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 
-import com.cbox.library.domain.form.UserDeleteRequestForm;
+import com.cbox.library.domain.form.UserUpdateRequestForm;
+import com.cbox.library.domain.model.Board;
 import com.cbox.library.domain.model.User;
+import com.cbox.library.domain.service.BoardService;
 import com.cbox.library.domain.service.RequestService;
-import com.cbox.library.domain.service.UserDeleteRequestService;
 import com.cbox.library.domain.service.UserService;
+import com.cbox.library.domain.service.UserUpdateRequestService;
 
 @Controller
-public class UserDeleteRequestController {
+public class UseUpdateRequestController {
     @Autowired
     UserService userService;
     
     @Autowired
-    UserDeleteRequestService userDeleteRequestService;
+    BoardService boardService;
     
     @Autowired
     RequestService requestService;
     
-    @GetMapping("/delete/{id}")
-    public String deleteRequestCreate(@PathVariable int id, Model model) {
+    @Autowired
+    UserUpdateRequestService userUpdateRequestService;
+    
+    @GetMapping("/update/{id}")
+    public String userUpdateRequest(@PathVariable int id, Model model) {
         User user = userService.findOne(id);
+        List<Board> boardList = boardService.getAll();
         model.addAttribute("user", user);
-        model.addAttribute("userDeleteRequestForm", new UserDeleteRequestForm());
-        return "delete";
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("userUpdateRequestForm", new UserUpdateRequestForm());
+        return "update";
     }
     
-    @PostMapping("/delete")
-    public String deleteRequestExecute(@Validated UserDeleteRequestForm form, BindingResult result,
+    @PostMapping("/update")
+    public String userUpdateRequestExecute(@Validated UserUpdateRequestForm form, BindingResult result,
             @RequestHeader(name = "User-Agent") String userAgent, HttpServletRequest request) {
-        if(result.hasErrors()) return "redirect:/delete/" + form.getUserId();
         String ipAddress = requestService.getClientIp(request);
-        userDeleteRequestService.create(form, userAgent, ipAddress);
+        userUpdateRequestService.create(form, userAgent, ipAddress);
         return "redirect:/show";
     }
 }

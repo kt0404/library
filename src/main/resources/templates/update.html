@@ -6,6 +6,7 @@
     <title>list</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
 </head>
@@ -19,27 +20,30 @@
         </a>
     </nav>
     
-    <div class="container">
+    <div class="container mt-3">
         <div class="row justify-content-center">
-            <div class="card m-3" style="width:500px;">
-                <div class="card-header">
-                    <div name="person" class="head">
-                        <div>名前 : <span th:text="${user.name}">nodata</span></div>
-                    </div>
+            <form th:action="@{/update}" th:object="${userUpdateRequestForm}" method="POST">
+                <input type="hidden" id="userId" name="userId" th:value="${user.id}"></input>
+                <div class="form-group">
+                    <label for="name">名前</label><br />
+                    <input type="text" class=”form-control” id="name" name="name" th:value="${user.name}" />
                 </div>
-                <div class="card-body">
-                    <div class="row justify-content-center mb-4">
-                        <form th:action="@{/update}" th:object="${userUpdateForm}" method="POST">
-                            <input type="hidden" name="userId" th:value="${user.id}"></hidden>
-                            <div class="form-group">
-                                <label for="discription">情報</label><br />
-                                <textarea class="form-control"　id="discription" name="discription" th:text="${user.discription}" cols="30" rows="6"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">更新</button>
-                        </form>
-                    </div>
+                <div class="form-group">
+                    <label for="furigana">ふりがな</label><br />
+                    <input type="text" class=”form-control” id="furigana" name="furigana" th:value="${user.furigana}" />
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="furigana">板</label><br />
+                    <select name="boardId">
+                        <option th:each="board : ${boardList}" th:value="${board.id}" th:selected="${board.id} == ${user.boardId}">[[${board.name}]]</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="discription">説明</label><br />
+                    <textarea class=”form-control”　id="discription" name="discription" th:text="${user.discription}" cols="30" rows="6"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">送信</button>
+            </form>
         </div>
     </div>
     
