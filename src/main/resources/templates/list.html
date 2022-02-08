@@ -32,7 +32,7 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<p>情報 : <span th:text="${user.discription}">nodata</span></p>
+					<p><span th:text="${user.discription}">nodata</span></p>
 					<div class="irai">
 						<a class="update-irai" th:href="@{'/update/' + ${user.id}}">変更依頼</a>
 						<a th:href="@{'/delete/' + ${user.id}}">削除依頼</a>

@@ -5,14 +5,14 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class CommentRepository {
 	
 	@Autowired
-	NamedParameterJdbcOperations namedJdbc;
+	NamedParameterJdbcTemplate namedJdbc;
 
 	public List<Map<String, Object>> getComments(int userId) {
 		String sql = "SELECT * FROM comment WHERE user_id = :userId ORDER BY created_at DESC";
