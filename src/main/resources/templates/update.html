@@ -22,25 +22,25 @@
     
     <div class="container mt-3">
         <div class="row justify-content-center">
-            <form th:action="@{/update}" th:object="${userUpdateRequestForm}" method="POST">
-                <input type="hidden" id="userId" name="userId" th:value="${user.id}"></input>
+            <form th:action="@{/update}" th:object="${memberUpdateRequestForm}" method="POST">
+                <input type="hidden" id="memberId" name="memberId" th:value="${member.id}"></input>
                 <div class="form-group">
                     <label for="name">名前</label><br />
-                    <input type="text" class=”form-control” id="name" name="name" th:value="${user.name}" />
+                    <input type="text" class=”form-control” id="name" name="name" th:value="${member.name}" />
                 </div>
                 <div class="form-group">
                     <label for="furigana">ふりがな</label><br />
-                    <input type="text" class=”form-control” id="furigana" name="furigana" th:value="${user.furigana}" />
+                    <input type="text" class=”form-control” id="furigana" name="furigana" th:value="${member.furigana}" />
                 </div>
                 <div class="form-group">
                     <label for="furigana">板</label><br />
                     <select name="boardId">
-                        <option th:each="board : ${boardList}" th:value="${board.id}" th:selected="${board.id} == ${user.boardId}">[[${board.name}]]</option>
+                        <option th:each="board : ${boardList}" th:value="${board.id}" th:selected="${board.id} == ${member.boardId}">[[${board.name}]]</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="discription">説明</label><br />
-                    <textarea class=”form-control”　id="discription" name="discription" th:text="${user.discription}" cols="30" rows="6"></textarea>
+                    <textarea class=”form-control”　id="discription" name="discription" th:text="${member.discription}" cols="30" rows="6"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">送信</button>
             </form>

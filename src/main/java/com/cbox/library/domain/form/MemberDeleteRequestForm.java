@@ -2,19 +2,19 @@ package com.cbox.library.domain.form;
 
 import java.io.Serializable;
 
-public class UserDeleteRequestForm implements Serializable {
+public class MemberDeleteRequestForm implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private int userId;
+    private int memberId;
     
     private String deleteReason;
 
-    public int getUserId() {
-        return userId;
+    public int getMemberId() {
+        return memberId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
     }
 
     public String getDeleteReason() {

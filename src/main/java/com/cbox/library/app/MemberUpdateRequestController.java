@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 
-import com.cbox.library.domain.form.UserUpdateRequestForm;
+import com.cbox.library.domain.form.MemberUpdateRequestForm;
 import com.cbox.library.domain.model.Board;
-import com.cbox.library.domain.model.User;
+import com.cbox.library.domain.model.Member;
 import com.cbox.library.domain.service.BoardService;
 import com.cbox.library.domain.service.RequestService;
-import com.cbox.library.domain.service.UserService;
-import com.cbox.library.domain.service.UserUpdateRequestService;
+import com.cbox.library.domain.service.MemberService;
+import com.cbox.library.domain.service.MemberUpdateRequestService;
 
 @Controller
-public class UseUpdateRequestController {
+public class MemberUpdateRequestController {
     @Autowired
-    UserService userService;
+    MemberService memberService;
     
     @Autowired
     BoardService boardService;
@@ -34,23 +34,23 @@ public class UseUpdateRequestController {
     RequestService requestService;
     
     @Autowired
-    UserUpdateRequestService userUpdateRequestService;
+    MemberUpdateRequestService memberUpdateRequestService;
     
     @GetMapping("/update/{id}")
-    public String userUpdateRequest(@PathVariable int id, Model model) {
-        User user = userService.findOne(id);
+    public String memberUpdateRequest(@PathVariable int id, Model model) {
+        Member member = memberService.findOne(id);
         List<Board> boardList = boardService.getAll();
-        model.addAttribute("user", user);
+        model.addAttribute("member", member);
         model.addAttribute("boardList", boardList);
-        model.addAttribute("userUpdateRequestForm", new UserUpdateRequestForm());
+        model.addAttribute("memberUpdateRequestForm", new MemberUpdateRequestForm());
         return "update";
     }
     
     @PostMapping("/update")
-    public String userUpdateRequestExecute(@Validated UserUpdateRequestForm form, BindingResult result,
+    public String memberUpdateRequestExecute(@Validated MemberUpdateRequestForm form, BindingResult result,
             @RequestHeader(name = "User-Agent") String userAgent, HttpServletRequest request) {
         String ipAddress = requestService.getClientIp(request);
-        userUpdateRequestService.create(form, userAgent, ipAddress);
+        memberUpdateRequestService.create(form, userAgent, ipAddress);
         return "redirect:/show";
     }
 }

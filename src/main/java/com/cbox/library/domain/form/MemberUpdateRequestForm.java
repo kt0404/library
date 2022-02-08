@@ -5,11 +5,11 @@ import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class UserUpdateRequestForm implements Serializable {
+public class MemberUpdateRequestForm implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @NotNull
-    private int userId;
+    private int memberId;
     
     @NotNull
     @Size(max = 50)
@@ -25,12 +25,12 @@ public class UserUpdateRequestForm implements Serializable {
     @Size(max = 255)
     private String discription;
 
-    public int getUserId() {
-        return userId;
+    public int getMemberId() {
+        return memberId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
     }
 
     public String getName() {

@@ -2,7 +2,7 @@ package com.cbox.library.domain.model;
 
 import java.sql.Timestamp;
 
-public class User {
+public class Member {
 
 	private Integer id;
 

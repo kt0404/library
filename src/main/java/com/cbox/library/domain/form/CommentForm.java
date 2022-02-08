@@ -10,17 +10,17 @@ public class CommentForm implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@NotNull
-	private int userId;
+	private int memberId;
 	
 	@Size(max = 255, min = 3)
 	private String comment;
 	
-	public int getUserId() {
-		return userId;
+	public int getMemberId() {
+		return memberId;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
 	}
 
 	public String getComment() {

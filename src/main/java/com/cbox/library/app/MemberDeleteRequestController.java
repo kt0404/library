@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 
-import com.cbox.library.domain.form.UserDeleteRequestForm;
-import com.cbox.library.domain.model.User;
+import com.cbox.library.domain.form.MemberDeleteRequestForm;
+import com.cbox.library.domain.model.Member;
 import com.cbox.library.domain.service.RequestService;
-import com.cbox.library.domain.service.UserDeleteRequestService;
-import com.cbox.library.domain.service.UserService;
+import com.cbox.library.domain.service.MemberDeleteRequestService;
+import com.cbox.library.domain.service.MemberService;
 
 @Controller
-public class UserDeleteRequestController {
+public class MemberDeleteRequestController {
     @Autowired
-    UserService userService;
+    MemberService memberService;
     
     @Autowired
-    UserDeleteRequestService userDeleteRequestService;
+    MemberDeleteRequestService memberDeleteRequestService;
     
     @Autowired
     RequestService requestService;
     
     @GetMapping("/delete/{id}")
     public String deleteRequestCreate(@PathVariable int id, Model model) {
-        User user = userService.findOne(id);
-        model.addAttribute("user", user);
-        model.addAttribute("userDeleteRequestForm", new UserDeleteRequestForm());
+        Member member = memberService.findOne(id);
+        model.addAttribute("member", member);
+        model.addAttribute("memberDeleteRequestForm", new MemberDeleteRequestForm());
         return "delete";
     }
     
     @PostMapping("/delete")
-    public String deleteRequestExecute(@Validated UserDeleteRequestForm form, BindingResult result,
+    public String deleteRequestExecute(@Validated MemberDeleteRequestForm form, BindingResult result,
             @RequestHeader(name = "User-Agent") String userAgent, HttpServletRequest request) {
-        if(result.hasErrors()) return "redirect:/delete/" + form.getUserId();
+        if(result.hasErrors()) return "redirect:/delete/" + form.getMemberId();
         String ipAddress = requestService.getClientIp(request);
-        userDeleteRequestService.create(form, userAgent, ipAddress);
+        memberDeleteRequestService.create(form, userAgent, ipAddress);
         return "redirect:/show";
     }
 }

@@ -26,9 +26,9 @@ public class CommentsController {
     public String comment(@Validated CommentForm form, BindingResult result,
             @RequestHeader(name = "User-Agent") String userAgent, HttpServletRequest request) {
         if (result.hasErrors())
-            return "redirect:/detail/" + form.getUserId();
+            return "redirect:/detail/" + form.getMemberId();
         String ipAddress = requestService.getClientIp(request);
         commentService.create(form, userAgent, ipAddress);
-        return "redirect:/detail/" + form.getUserId();
+        return "redirect:/detail/" + form.getMemberId();
     }
 }

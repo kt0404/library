@@ -7,18 +7,18 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserDeleteRequestRepository {
+public class MemberDeleteRequestRepository {
     @Autowired
     JdbcTemplate jdbc;
     
     @Autowired
     NamedParameterJdbcTemplate namedJdbc;
     
-    public int create(int userId, String deleteReason, String userAgent, String ipAddress) {
-        String sql = "INSERT INTO delete_request(user_id, delete_reason, user_agent, ip_address, created_at, delete_flag)"
-                + "VALUES(:userId, :deleteReason, :userAgent, :ipAddress, now(), 0)";
+    public int create(int memberId, String deleteReason, String userAgent, String ipAddress) {
+        String sql = "INSERT INTO delete_request(member_id, delete_reason, user_agent, ip_address, created_at, delete_flag)"
+                + "VALUES(:memberId, :deleteReason, :userAgent, :ipAddress, now(), 0)";
         return namedJdbc.update(sql, new MapSqlParameterSource()
-                .addValue("userId", userId)
+                .addValue("memberId", memberId)
                 .addValue("deleteReason", deleteReason)
                 .addValue("userAgent", userAgent)
                 .addValue("ipAddress", ipAddress));

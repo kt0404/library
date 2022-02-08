@@ -6,7 +6,7 @@ public class Comment {
 	
 	private Integer id;
 	
-	private Integer userId;
+	private Integer memberId;
 	
 	private String comment;
 	
@@ -24,12 +24,12 @@ public class Comment {
 		this.id = id;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public Integer getMemberId() {
+		return memberId;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setMemberId(Integer memberId) {
+		this.memberId = memberId;
 	}
 
 	public String getComment() {

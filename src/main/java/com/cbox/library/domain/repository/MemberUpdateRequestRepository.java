@@ -6,15 +6,15 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserUpdateRequestRepository {
+public class MemberUpdateRequestRepository {
     @Autowired
     private NamedParameterJdbcTemplate namedJdbc;
     
-    public int create(int userId, String name, String furigana, int boardId, String discription, String userAgent, String ipAddress) {
-        String sql = "INSERT INTO update_request(user_id, name, furigana, board_id, discription, user_agent, ip_address, created_at, delete_flag)"
-                + "VALUES(:userId, :name, :furigana, :boardId, :discription, :userAgent, :ipAddress, now(), 0)";
+    public int create(int memberId, String name, String furigana, int boardId, String discription, String userAgent, String ipAddress) {
+        String sql = "INSERT INTO update_request(member_id, name, furigana, board_id, discription, user_agent, ip_address, created_at, delete_flag)"
+                + "VALUES(:memberId, :name, :furigana, :boardId, :discription, :userAgent, :ipAddress, now(), 0)";
         return namedJdbc.update(sql, new MapSqlParameterSource()
-                .addValue("userId", userId)
+                .addValue("memberId", memberId)
                 .addValue("name", name)
                 .addValue("furigana", furigana)
                 .addValue("boardId", boardId)

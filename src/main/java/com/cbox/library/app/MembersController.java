@@ -12,22 +12,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.cbox.library.domain.form.RegisterForm;
 import com.cbox.library.domain.model.Board;
-import com.cbox.library.domain.model.User;
+import com.cbox.library.domain.model.Member;
 import com.cbox.library.domain.service.BoardService;
-import com.cbox.library.domain.service.UserService;
+import com.cbox.library.domain.service.MemberService;
 
 @Controller
-public class UserController {
+public class MembersController {
 
     @Autowired
-    UserService userService;
+    MemberService memberService;
 
     @Autowired
     BoardService boardService;
 
     @GetMapping("/show")
     public String show(Model model) {
-        List<User> list = userService.findAll();
+        List<Member> list = memberService.findAll();
         model.addAttribute("list", list);
         return "list";
     }
@@ -44,7 +44,7 @@ public class UserController {
     public String register(@Validated RegisterForm form, BindingResult result, Model model) {
         if (result.hasErrors())
             return "register";
-        userService.create(form);
+        memberService.create(form);
         model.addAttribute("registerForm", new RegisterForm());
         List<Board> boardList = boardService.getAll();
         model.addAttribute("boardList", boardList);

@@ -24,13 +24,13 @@
 			<div class="card m-3" style="width:500px;">
 				<div class="card-header">
 					<div name="person" class="head">
-						<div>名前 : <span th:text="${user.name}">nodata</span></div>
+						<div>名前 : <span th:text="${member.name}">nodata</span></div>
 					</div>
 				</div>
 				<div class="card-body">
 					<div class="row justify-content-center mb-4">
 						<form th:action="@{/comment}" th:object="${commentForm}" method="POST">
-							<input type="hidden" name="userId" th:value="${user.id}"></hidden>
+							<input type="hidden" name="memberId" th:value="${member.id}"></hidden>
 							<div class="form-group">
 								<label for="discription">コメント</label><br />
 								<textarea class="form-control"　id="comment" name="comment" cols="30" rows="6"></textarea>

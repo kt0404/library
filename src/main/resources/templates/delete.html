@@ -24,13 +24,13 @@
             <div class="card m-3" style="width:500px;">
                 <div class="card-header">
                     <div name="person" class="head">
-                        <div>名前 : <span th:text="${user.name}">nodata</span></div>
+                        <div>名前 : <span th:text="${member.name}">nodata</span></div>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="row justify-content-center mb-4">
-                        <form th:action="@{/delete}" th:object="${userDeleteRequestForm}" method="POST">
-                            <input type="hidden" name="userId" th:value="${user.id}"></hidden>
+                        <form th:action="@{/delete}" th:object="${memberDeleteRequestForm}" method="POST">
+                            <input type="hidden" name="memberId" th:value="${member.id}"></hidden>
                             <div class="form-group">
                                 <label for="deleteReason">削除理由</label><br />
                                 <textarea class="form-control"　id="deleteReason" name="deleteReason" cols="30" rows="6"></textarea>

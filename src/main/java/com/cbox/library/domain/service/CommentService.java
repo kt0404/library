@@ -18,13 +18,13 @@ public class CommentService {
 	@Autowired
 	CommentRepository commentRepository;
 
-	public List<Comment> getComments(Integer userId) {
-		List<Map<String, Object>> tmpList = commentRepository.getComments(userId);
+	public List<Comment> getComments(Integer memberId) {
+		List<Map<String, Object>> tmpList = commentRepository.getComments(memberId);
 		List<Comment> result = new ArrayList<>();
 		for (Map<String, Object> map : tmpList) {
 			Comment comment = new Comment();
 			comment.setId((Integer) map.get("id"));
-			comment.setUserId((Integer) map.get("user_Id"));
+			comment.setMemberId((Integer) map.get("member_Id"));
 			comment.setComment((String) map.get("comment"));
 			comment.setUserAgent((String) map.get("user_agent"));
 			comment.setIpAddress((String) map.get("ip_address"));
@@ -35,8 +35,8 @@ public class CommentService {
 	}
 
 	public void create(CommentForm form, String userAgent, String ipAddress) {
-		int userId = form.getUserId();
+		int memberId = form.getMemberId();
 		String comment = form.getComment();
-		commentRepository.create(userId, comment, userAgent, ipAddress);
+		commentRepository.create(memberId, comment, userAgent, ipAddress);
 	}
 }

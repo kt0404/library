@@ -14,15 +14,15 @@ public class CommentRepository {
 	@Autowired
 	NamedParameterJdbcTemplate namedJdbc;
 
-	public List<Map<String, Object>> getComments(int userId) {
-		String sql = "SELECT * FROM comment WHERE user_id = :userId ORDER BY created_at DESC";
-		return namedJdbc.queryForList(sql, new MapSqlParameterSource().addValue("userId", userId));
+	public List<Map<String, Object>> getComments(int memberId) {
+		String sql = "SELECT * FROM comment WHERE member_id = :memberId ORDER BY created_at DESC";
+		return namedJdbc.queryForList(sql, new MapSqlParameterSource().addValue("memberId", memberId));
 	}
 	
-	public void create(int userId, String comment, String userAgent, String ipAddress) {
-		String sql = "INSERT INTO comment(user_id, comment, user_agent, ip_address, created_at)"
-				+ " VALUES(:userId, :comment, :userAgent, :ipAddress, now())";
-		namedJdbc.update(sql, new MapSqlParameterSource().addValue("userId", userId).addValue("comment", comment)
+	public void create(int memberId, String comment, String userAgent, String ipAddress) {
+		String sql = "INSERT INTO comment(member_id, comment, user_agent, ip_address, created_at)"
+				+ " VALUES(:memberId, :comment, :userAgent, :ipAddress, now())";
+		namedJdbc.update(sql, new MapSqlParameterSource().addValue("memberId", memberId).addValue("comment", comment)
 				.addValue("userAgent", userAgent).addValue("ipAddress", ipAddress));
 	}
 }
