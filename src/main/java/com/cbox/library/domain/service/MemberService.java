@@ -9,15 +9,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cbox.library.domain.form.RegisterForm;
+import com.cbox.library.domain.mapper.MemberMapper;
 import com.cbox.library.domain.form.MemberUpdateRequestForm;
 import com.cbox.library.domain.model.Member;
 import com.cbox.library.domain.repository.MemberRepository;
 
 @Service
 public class MemberService {
-
+    @Autowired
+    MemberMapper memberMapper;
+    
 	@Autowired
 	MemberRepository memberRepository;
+	
+	public Member findById(int id) {
+	    return memberMapper.findById(id);
+	}
 
 	public Member findOne(int id) {
 		Map<String, Object> map = memberRepository.findOne(id);
@@ -59,9 +66,17 @@ public class MemberService {
 		return memberRepository.create(name, furigana, boardId, discription);
 	}
 	
+	public boolean updateNameAndFuriganaAndBoardIdAndDiscriptionById(String name, String furigana, int boardId, String discription, int memberId) {
+	    return memberMapper.updateNameAndFuriganaAndBoardIdAndDiscriptionById(name, furigana, boardId, discription, memberId);
+	}
+	
 	public int updateDiscription(MemberUpdateRequestForm form) {
 	    int id = form.getMemberId();
 	    String discription = form.getDiscription();
 	    return memberRepository.updateDiscription(id, discription);
+	}
+	
+	public List<Member> testFindAll() {
+	    return memberMapper.findAll();
 	}
 }

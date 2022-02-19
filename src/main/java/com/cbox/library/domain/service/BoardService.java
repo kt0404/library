@@ -8,14 +8,21 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cbox.library.domain.mapper.BoardMapper;
 import com.cbox.library.domain.model.Board;
 import com.cbox.library.domain.repository.BoardRepository;
 
 @Service
 public class BoardService {
+    @Autowired
+    private BoardMapper boardMapper;
 
 	@Autowired
 	private BoardRepository boardRepository;
+	
+	public Board findById(int id) {
+	    return boardMapper.findById(id);
+	}
 
 	public List<Board> getAll() {
 		List<Map<String, Object>> tmpList = boardRepository.getAllOrderById();

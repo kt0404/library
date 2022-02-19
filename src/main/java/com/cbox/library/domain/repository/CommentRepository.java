@@ -22,7 +22,10 @@ public class CommentRepository {
 	public void create(int memberId, String comment, String userAgent, String ipAddress) {
 		String sql = "INSERT INTO comment(member_id, comment, user_agent, ip_address, created_at)"
 				+ " VALUES(:memberId, :comment, :userAgent, :ipAddress, now())";
-		namedJdbc.update(sql, new MapSqlParameterSource().addValue("memberId", memberId).addValue("comment", comment)
-				.addValue("userAgent", userAgent).addValue("ipAddress", ipAddress));
+		namedJdbc.update(sql, new MapSqlParameterSource()
+		        .addValue("memberId", memberId)
+		        .addValue("comment", comment)
+				.addValue("userAgent", userAgent)
+				.addValue("ipAddress", ipAddress));
 	}
 }

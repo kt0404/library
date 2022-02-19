@@ -1,14 +1,13 @@
-package com.cbox.library.domain.form;
+package com.cbox.library.domain.model;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class MemberDeleteRequestForm implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class DeleteRequest {
+    private Integer id;
     
-    private int id;
-
-    private int memberId;
+    private Integer memberId;
+    
+    private String memberName;
     
     private String deleteReason;
     
@@ -18,22 +17,30 @@ public class MemberDeleteRequestForm implements Serializable {
     
     private Timestamp createdAt;
     
-    private int deleteFlag;
+    private Integer deleteFlag;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getMemberId() {
+    public Integer getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(int memberId) {
+    public void setMemberId(Integer memberId) {
         this.memberId = memberId;
+    }
+
+    public String getMemberName() {
+        return memberName;
+    }
+
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
     }
 
     public String getDeleteReason() {
@@ -68,11 +75,11 @@ public class MemberDeleteRequestForm implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public int getDeleteFlag() {
+    public Integer getDeleteFlag() {
         return deleteFlag;
     }
 
-    public void setDeleteFlag(int deleteFlag) {
+    public void setDeleteFlag(Integer deleteFlag) {
         this.deleteFlag = deleteFlag;
     }
 }

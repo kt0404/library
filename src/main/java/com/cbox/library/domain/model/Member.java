@@ -73,5 +73,4 @@ public class Member {
 	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
 }

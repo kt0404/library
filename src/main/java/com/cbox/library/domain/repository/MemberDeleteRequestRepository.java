@@ -1,5 +1,8 @@
 package com.cbox.library.domain.repository;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -22,5 +25,15 @@ public class MemberDeleteRequestRepository {
                 .addValue("deleteReason", deleteReason)
                 .addValue("userAgent", userAgent)
                 .addValue("ipAddress", ipAddress));
+    }
+    
+    public List<Map<String, Object>> findAll() {
+        String sql = "SELECT * FROM delete_request";
+        return jdbc.queryForList(sql);
+    }
+    
+    public List<Map<String, Object>> findAllByDeleteFlag(int deleteFlag) {
+        String sql = "SELECT * FROM delete_request WHERE delete_flag = ?";
+        return jdbc.queryForList(sql, deleteFlag);
     }
 }
