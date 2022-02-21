@@ -34,16 +34,6 @@ public class MemberRepository {
         return result;
     }
 
-    public int create(String name, String furigana, int boardId, String discription) {
-        String sql = "INSERT INTO member(name, furigana, board_id, discription, created_at, updated_at)"
-                + "VALUES(:name, :furigana, :boardId, :discription, now(), now())";
-        return namedJdbc.update(sql, new MapSqlParameterSource()
-                .addValue("name", name)
-                .addValue("furigana", furigana)
-                .addValue("boardId", boardId)
-                .addValue("discription", discription));
-    }
-
     public int updateDiscription(int memberId, String discription) {
         String sql = "UPDATE member SET discription = :discription WHERE id = :memberId";
         return namedJdbc.update(sql, new MapSqlParameterSource()

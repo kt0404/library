@@ -7,7 +7,6 @@ import javax.validation.constraints.Size;
 
 public class MemberUpdateRequestForm implements Serializable {
     private static final long serialVersionUID = 1L;
-
     @NotNull
     private int memberId;
     

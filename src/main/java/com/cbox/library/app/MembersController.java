@@ -28,7 +28,6 @@ public class MembersController {
     @GetMapping("/show")
     public String show(Model model) {
         List<Member> list = memberService.findAll();
-        List<Member> list2 = memberService.testFindAll();
         model.addAttribute("list", list);
         return "list";
     }

@@ -23,6 +23,8 @@ public class UpdateRequest {
     
     private Integer deleteFlag;
     
+    private String beforeName;
+    
     public Integer getId() {
         return id;
     }
@@ -101,5 +103,13 @@ public class UpdateRequest {
     
     public void setDeleteFlag(Integer deleteFlag) {
         this.deleteFlag = deleteFlag;
+    }
+
+    public String getBeforeName() {
+        return beforeName;
+    }
+
+    public void setBeforeName(String beforeName) {
+        this.beforeName = beforeName;
     }
 }

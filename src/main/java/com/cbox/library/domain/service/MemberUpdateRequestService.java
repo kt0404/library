@@ -7,19 +7,26 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.cbox.library.domain.common.Constants;
 import com.cbox.library.domain.form.MemberUpdateRequestForm;
+import com.cbox.library.domain.mapper.MemberMapper;
 import com.cbox.library.domain.mapper.MemberUpdateRequestMapper;
 import com.cbox.library.domain.model.UpdateRequest;
 import com.cbox.library.domain.repository.MemberUpdateRequestRepository;
 
 @Service
+@Transactional
 public class MemberUpdateRequestService {
     @Autowired
     MemberUpdateRequestRepository memberUpdateRequestRepository;
     
     @Autowired
     MemberUpdateRequestMapper memberUpdateRequestMapper;
+    
+    @Autowired
+    MemberMapper memberMapper;
     
     public int create(MemberUpdateRequestForm form, String userAgent, String ipAdress) {
         int memberId = form.getMemberId();
@@ -52,5 +59,28 @@ public class MemberUpdateRequestService {
             result.add(request);
         }
         return result;
+    }
+    
+    public List<UpdateRequest> findByDeleteFlag(int deleteFlag) {
+        return memberUpdateRequestMapper.find(null, deleteFlag);
+    }
+    
+    public List<UpdateRequest> findByIdAndDeleteFlag(int id, int deleteFlag) {
+        return memberUpdateRequestMapper.find(id, deleteFlag);
+    }
+    
+    public boolean acceptUpdateRequest(int updateRequestId) {
+        UpdateRequest updateRequet = memberUpdateRequestMapper.findByid(updateRequestId);
+        String name = updateRequet.getName();
+        String furigana = updateRequet.getFurigana();
+        int boardId = updateRequet.getBoardId();
+        String discription = updateRequet.getDiscription();
+        int memberId = updateRequet.getMemberId();
+        memberMapper.update(name, furigana, boardId, discription, memberId);
+        return memberUpdateRequestMapper.updateDeleteFlagById(Constants.Request.FLAG_PROCESSED, updateRequestId);
+    }
+    
+    public boolean refuseUpdateRequest(int updateRequestId) {
+        return memberUpdateRequestMapper.updateDeleteFlagById(Constants.Request.FLAG_PROCESSED, updateRequestId);
     }
 }

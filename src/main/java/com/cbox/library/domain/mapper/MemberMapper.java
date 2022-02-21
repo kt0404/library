@@ -4,30 +4,19 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.Param;
 
 import com.cbox.library.domain.model.Member;
 
 @Mapper
 public interface MemberMapper {
-    @Select("SELECT id, name, furigana, board_id AS boardId, discription, created_at AS createdAt, updated_at AS updatedAt FROM member WHERE id = #{id}")
-    public Member findById(int id);
-    
-    @Select("SELECT "
-            + "id, "
-            + "name, "
-            + "furigana, "
-            + "board_id AS boardId, "
-            + "discription, "
-            + "created_at AS createdAt, "
-            + "updated_at AS updatedAt "
-            + "FROM member")
-    public List<Member> findAll();
-    
-    @Update("UPDATE update_request SET name = #{name}, furigana = #{furigana}, board_id = #{boardId}, discription = #{discription}, updated_at = now() WHERE id = #{memberId}")
-    public boolean updateNameAndFuriganaAndBoardIdAndDiscriptionById(String name, String furigana, int boardId, String discription, int memberId);
-    
     @Delete("DELETE FROM member WHERE id = #{memberId}")
     public boolean deleteById(int memberId);
+    
+    public List<Member> find(@Param("id") Integer id);
+    
+    public boolean create(@Param("name") String name, @Param("furigana") String furigana, @Param("boardId") Integer boardId, @Param("discription") String discription);
+    
+    public boolean update(@Param("name") String name, @Param("furigana") String furigana,
+            @Param("boardId") Integer boardId, @Param("discription") String discription, @Param("id") Integer id);
 }

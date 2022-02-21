@@ -27,7 +27,8 @@ public class RequestListController {
     
     @GetMapping("/request/list")
     public String requestList(Model model) {
-        List<UpdateRequest> updateList = memberUpdateRequestService.findAllByDeleteFlag(Constants.Request.FLAG_UNPROCESSED);
+        List<UpdateRequest> updateList = memberUpdateRequestService.findByDeleteFlag(Constants.Request.FLAG_UNPROCESSED);
+//        List<UpdateRequest> updateList = memberUpdateRequestService.findAllByDeleteFlag(Constants.Request.FLAG_UNPROCESSED);
         List<DeleteRequest> deleteList = memberDeleteRequestService.findAllByDeleteFlagWithMemberName(Constants.Request.FLAG_UNPROCESSED);
         model.addAttribute("updateList", updateList);
         model.addAttribute("deleteList", deleteList);

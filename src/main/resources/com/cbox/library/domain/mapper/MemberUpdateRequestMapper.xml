@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbox.library.domain.mapper.MemberUpdateRequestMapper">
+    <select id="find" resultType="UpdateRequest">
+        SELECT
+             u.id,
+             u.member_id,
+             u.name,
+             m.name AS beforeName,
+             u.furigana,
+             u.board_id,
+             u.discription,
+             u.user_agent,
+             u.ip_address,
+             u.created_at,
+             u.delete_flag
+        FROM
+            update_request u
+        LEFT JOIN
+            member m
+        ON
+            u.member_id = m.id
+        <where>
+            <if test="id != null">
+                AND u.id = #{id}
+            </if>
+            <if test="deleteFlag != null">
+                AND u.delete_flag = #{deleteFlag}
+            </if>
+        </where>
+        ORDER BY u.furigana
+    </select>
+    
+    <update id="updateDeleteFlagById">
+	    UPDATE
+	       update_request
+	    <set>
+	       delete_Flag = #{deleteFlag}
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+</mapper>

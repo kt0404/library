@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbox.library.domain.mapper.MemberMapper">
+    <select id="find" resultType="Member">
+        SELECT * FROM member
+        <where>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+        </where>
+        ORDER BY furigana
+    </select>
+    
+    <insert id="create">
+        INSERT INTO member(name, furigana, board_id, discription, created_at, updated_at)
+            VALUES(#{name}, #{furigana}, #{boardId}, #{discription}, now(), now())
+    </insert>
+    
+    <update id="update">
+        UPDATE
+            member
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="furigana != null">
+                furigana = #{furigana},
+            </if>
+            <if test="boardId != null">
+                board_id = #{boardId},
+            </if>
+            <if test="discription != null">
+                discription = #{discription},
+            </if>
+                updated_at = now()
+        </set>
+        <where>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+        </where>
+    </update>
+</mapper>

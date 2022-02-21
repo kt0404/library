@@ -24,7 +24,7 @@ public class DetailController {
 
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable int id, Model model) {
-        Member member = memberService.findOne(id);
+        Member member = memberService.findById(id);
         if (member == null)
             return "redirect:/show";
         List<Comment> commentList = commentService.getComments(id);

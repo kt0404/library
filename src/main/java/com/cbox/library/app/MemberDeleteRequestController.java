@@ -31,7 +31,7 @@ public class MemberDeleteRequestController {
     
     @GetMapping("/delete/{id}")
     public String deleteRequestCreate(@PathVariable int id, Model model) {
-        Member member = memberService.findOne(id);
+        Member member = memberService.findById(id);
         model.addAttribute("member", member);
         model.addAttribute("memberDeleteRequestForm", new MemberDeleteRequestForm());
         return "delete";

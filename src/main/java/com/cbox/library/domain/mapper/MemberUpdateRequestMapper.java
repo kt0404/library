@@ -1,6 +1,9 @@
 package com.cbox.library.domain.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -13,4 +16,8 @@ public interface MemberUpdateRequestMapper {
     
     @Update("UPDATE update_request SET delete_flag = #{deleteFlag} WHERE member_id = #{memberId}")
     public boolean updateDeleteFlagByMemberId(int memberId, int deleteFlag);
+    
+    public List<UpdateRequest> find(@Param("id") Integer id, @Param("deleteFlag") Integer deleteFlag);
+    
+    public boolean updateDeleteFlagById(@Param("deleteFlag") int deleteFlag, @Param("id") int id);
 }

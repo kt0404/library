@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.cbox.library.domain.model.Board;
+import com.cbox.library.domain.model.Member;
 import com.cbox.library.domain.model.UpdateRequest;
+import com.cbox.library.domain.service.BoardService;
 import com.cbox.library.domain.service.MemberService;
 import com.cbox.library.domain.service.MemberUpdateRequestService;
 
@@ -19,23 +22,31 @@ public class ProcessMemberUpdateRequestController {
     @Autowired
     MemberUpdateRequestService memberUpdateRequestService;
     
+    @Autowired
+    BoardService boardService;
+    
     @GetMapping("/update/request/process/{updateRequestId}")
     public String index(@PathVariable int updateRequestId, Model model) {
         UpdateRequest updateRequest = memberUpdateRequestService.findById(updateRequestId);
+        Member member = memberService.findById(updateRequest.getMemberId());
+        Board beforeBoard = boardService.findById(member.getBoardId());
+        Board afterBoard = boardService.findById(updateRequest.getBoardId());
         model.addAttribute("updateRequest", updateRequest);
-        return "update_request_datail";
+        model.addAttribute("member", member);
+        model.addAttribute("beforeBoard", beforeBoard);
+        model.addAttribute("afterBoard", afterBoard);
+        return "update_request_detail";
     }
     
-    @PostMapping("/update/request/process/{updateRequestId}")
+    @PostMapping("/update/request/accept/{updateRequestId}")
     public String acceptUpdateRequest(@PathVariable int updateRequestId) {
-        UpdateRequest updateRequest = memberUpdateRequestService.findById(updateRequestId);
-        memberService.updateNameAndFuriganaAndBoardIdAndDiscriptionById(
-                updateRequest.getName(),
-                updateRequest.getFurigana(),
-                updateRequest.getBoardId(),
-                updateRequest.getDiscription(),
-                updateRequest.getMemberId());
-        
-        return null;
+        memberUpdateRequestService.acceptUpdateRequest(updateRequestId);
+        return "redirect:/show";
+    }
+    
+    @PostMapping("/update/request/refuse/{updateRequestId}")
+    public String refuseUpdateRequest(@PathVariable int updateRequestId) {
+        memberUpdateRequestService.refuseUpdateRequest(updateRequestId);
+        return "redirect:/show";
     }
 }

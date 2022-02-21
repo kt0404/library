@@ -38,7 +38,7 @@ public class MemberUpdateRequestController {
     
     @GetMapping("/update/{id}")
     public String memberUpdateRequest(@PathVariable int id, Model model) {
-        Member member = memberService.findOne(id);
+        Member member = memberService.findById(id);
         List<Board> boardList = boardService.getAll();
         model.addAttribute("member", member);
         model.addAttribute("boardList", boardList);

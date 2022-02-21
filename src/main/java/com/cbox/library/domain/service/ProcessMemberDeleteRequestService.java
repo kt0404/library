@@ -22,7 +22,7 @@ public class ProcessMemberDeleteRequestService {
     MemberUpdateRequestMapper memberUpdateRequestMapper;
     
     public boolean execute(int memberId, int deleteRequestId) {
-        memberDeleteRequestMapper.updateDeleteFlagById(deleteRequestId, Constants.Request.FLAG_PROCESSED);
+        memberDeleteRequestMapper.updateDeleteFlagByMemberId(memberId, Constants.Request.FLAG_PROCESSED);
         memberUpdateRequestMapper.updateDeleteFlagByMemberId(memberId, Constants.Request.FLAG_PROCESSED);
         return memberMapper.deleteById(memberId);
     }
