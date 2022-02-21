@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cbox.library.domain.mapper.MemberMapper">
-    <select id="find" resultType="com.cbox.library.domain.model.Member">
+    <select id="find" resultType="Member">
         SELECT * FROM member
         <where>
             <if test="id != null">
