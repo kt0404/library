@@ -22,12 +22,12 @@ public class DetailController {
     @Autowired
     CommentService commentService;
 
-    @GetMapping("/detail/{id}")
-    public String detailForm(@PathVariable int id, Model model) {
-        Member member = memberService.findById(id);
+    @GetMapping("/detail/{memberId}")
+    public String detailForm(@PathVariable int memberId, Model model) {
+        Member member = memberService.findByMemberId(memberId);
         if (member == null)
             return "redirect:/show";
-        List<Comment> commentList = commentService.getComments(id);
+        List<Comment> commentList = commentService.getComments(memberId);
         model.addAttribute("member", member);
         model.addAttribute("commentList", commentList);
         return "detail";

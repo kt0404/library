@@ -37,9 +37,9 @@ public class MemberUpdateRequestController {
     @Autowired
     MemberUpdateRequestService memberUpdateRequestService;
     
-    @GetMapping("/update/{id}")
-    public String memberUpdateRequestForm(@PathVariable int id, Model model) {
-        Member member = memberService.findById(id);
+    @GetMapping("/update/{memberId}")
+    public String memberUpdateRequestForm(@PathVariable int memberId, Model model) {
+        Member member = memberService.findByMemberId(memberId);
         List<Board> boardList = boardService.getAll();
         model.addAttribute("member", member);
         model.addAttribute("boardList", boardList);

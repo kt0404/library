@@ -13,8 +13,8 @@ public class BoardRepository {
 	@Autowired
 	private JdbcTemplate jdbc;
 	
-	public List<Map<String, Object>> getAllOrderById() {
-		String sql = "SELECT * FROM board ORDER BY id";
+	public List<Map<String, Object>> getAllOrderByBoardId() {
+		String sql = "SELECT * FROM board ORDER BY board_id";
 		return jdbc.queryForList(sql);
 	}
 	

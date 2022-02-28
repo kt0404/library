@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class User implements UserDetails {
     
-    private int id;
+    private int userId;
     
     private String email;
     
@@ -66,12 +66,12 @@ public class User implements UserDetails {
         return !locked;
     }
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {

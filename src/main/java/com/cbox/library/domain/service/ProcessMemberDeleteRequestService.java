@@ -25,11 +25,11 @@ public class ProcessMemberDeleteRequestService {
     public boolean execute(int memberId, int deleteRequestId) {
         memberDeleteRequestMapper.updateDeleteFlagByMemberId(memberId, Constants.Request.FLAG_PROCESSED);
         memberUpdateRequestMapper.updateDeleteFlagByMemberId(memberId, Constants.Request.FLAG_PROCESSED);
-        return memberMapper.deleteById(memberId);
+        return memberMapper.deleteByMemberId(memberId);
     }
     
-    public void refuseMemberDeleteRequest(int requestId) {
-        memberDeleteRequestMapper.updateDeleteFlagById(requestId, Constants.Request.FLAG_PROCESSED);
+    public void refuseMemberDeleteRequest(int deleteRequestId) {
+        memberDeleteRequestMapper.updateDeleteFlagByDeleteRequestId(deleteRequestId, Constants.Request.FLAG_PROCESSED);
     }
     
 }

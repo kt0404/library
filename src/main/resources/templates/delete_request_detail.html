@@ -27,7 +27,7 @@
             <div class="col-12">情報 : <span th:text="${member.discription}">nodata</span></div>
             <div class="col-12">削除理由 : <span th:text="${deleteRequest.deleteReason}">nodata</span></div>
             <form th:action="@{'/show'}" th:object="${memberDeleteRequestForm}" method="POST">
-                <input type="hidden" id="id" name="id" th:value="${deleteRequest.id}">
+                <input type="hidden" id="deleteRequestId" name="deleteRequestId" th:value="${deleteRequest.deleteRequestId}">
                 <input type="hidden" id="memberId" name="memberId" th:value="${deleteRequest.memberId}">
                 <button type="submit" th:formaction="@{'/accept/delete/request'}"  class="btn btn-primary">accept</button>
                 <button type="submit" th:formaction="@{'/refuse/delete/request'}" class="btn btn-primary">refuse</button>

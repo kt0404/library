@@ -5,7 +5,7 @@
 <mapper namespace="com.cbox.library.domain.mapper.MemberUpdateRequestMapper">
     <select id="find" resultType="UpdateRequest">
         SELECT
-             u.id,
+             u.update_request_id,
              u.member_id,
              u.name,
              m.name AS beforeName,
@@ -21,10 +21,10 @@
         LEFT JOIN
             member m
         ON
-            u.member_id = m.id
+            u.member_id = m.member_id
         <where>
-            <if test="id != null">
-                AND u.id = #{id}
+            <if test="updateRequestId != null">
+                AND u.update_request_id = #{updateRequestId}
             </if>
             <if test="deleteFlag != null">
                 AND u.delete_flag = #{deleteFlag}
@@ -33,14 +33,14 @@
         ORDER BY u.furigana
     </select>
     
-    <update id="updateDeleteFlagById">
+    <update id="updateDeleteFlagByUpdateRequestId">
 	    UPDATE
 	       update_request
 	    <set>
 	       delete_Flag = #{deleteFlag}
         </set>
         <where>
-            id = #{id}
+            update_request_id = #{updateRequestId}
         </where>
     </update>
 </mapper>

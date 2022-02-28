@@ -8,7 +8,7 @@ import com.cbox.library.domain.model.Board;
 @Mapper
 public interface BoardMapper {
     
-    @Select("SELECT * FROM board WHERE id = #{id}")
-    public Board findById(int id);
+    @Select("SELECT * FROM board WHERE board_id = #{boardId}")
+    public Board findByBoardId(int boardId);
     
 }

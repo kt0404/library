@@ -36,7 +36,7 @@
 			<div class="card m-3" style="width:500px;">
 				<div class="card-header">
 					<div name="person" class="head">
-						<div>名前 : <a th:href="@{'/detail/' + ${member.id}}"><span th:text="${member.name}">nodata</span></a></div>
+						<div>名前 : <a th:href="@{'/detail/' + ${member.memberId}}"><span th:text="${member.name}">nodata</span></a></div>
 						<div class="update"><span class="badge badge-primary">update</span></div>
 						<div class="comment"><span class="badge badge-primary">comment</span></div>
 					</div>
@@ -44,8 +44,8 @@
 				<div class="card-body">
 					<p><span th:text="${member.discription}">nodata</span></p>
 					<div class="irai">
-						<a class="update-irai" th:href="@{'/update/' + ${member.id}}">変更依頼</a>
-						<a th:href="@{'/delete/' + ${member.id}}">削除依頼</a>
+						<a class="update-irai" th:href="@{'/update/' + ${member.memberId}}">変更依頼</a>
+						<a th:href="@{'/delete/' + ${member.memberId}}">削除依頼</a>
 					</div>
 				</div>
 			</div>

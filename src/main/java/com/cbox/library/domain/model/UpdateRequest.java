@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class UpdateRequest {
     
-    private Integer id;
+    private Integer updateRequestId;
     
     private Integer memberId;
     
@@ -26,12 +26,12 @@ public class UpdateRequest {
     
     private String beforeName;
     
-    public Integer getId() {
-        return id;
+    public Integer getUpdateRequestId() {
+        return updateRequestId;
     }
     
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUpdateRequestId(Integer updateRequestId) {
+        this.updateRequestId = updateRequestId;
     }
     
     public Integer getMemberId() {

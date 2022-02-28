@@ -41,7 +41,7 @@
                 <div class="card-body">
                     <div class="row justify-content-center mb-4">
                         <form th:action="@{/delete}" th:object="${memberDeleteRequestForm}" method="POST">
-                            <input type="hidden" name="memberId" th:value="${member.id}"></hidden>
+                            <input type="hidden" name="memberId" th:value="${member.memberId}"></hidden>
                             <div class="form-group">
                                 <label for="deleteReason">削除理由</label><br />
                                 <textarea class="form-control"　id="deleteReason" name="deleteReason" cols="30" rows="6"></textarea>

@@ -34,7 +34,7 @@
     <div class="container mt-3">
         <div class="row justify-content-center">
             <form th:action="@{/update}" th:object="${memberUpdateRequestForm}" method="POST">
-                <input type="hidden" id="memberId" name="memberId" th:value="${member.id}"></input>
+                <input type="hidden" id="memberId" name="memberId" th:value="${member.memberId}"></input>
                 <div class="form-group">
                     <label for="name">名前</label><br />
                     <input type="text" class=”form-control” id="name" name="name" th:value="${member.name}" />
@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <label for="furigana">板</label><br />
                     <select name="boardId">
-                        <option th:each="board : ${boardList}" th:value="${board.id}" th:selected="${board.id} == ${member.boardId}">[[${board.name}]]</option>
+                        <option th:each="board : ${boardList}" th:value="${board.boardId}" th:selected="${board.boardId} == ${member.boardId}">[[${board.name}]]</option>
                     </select>
                 </div>
                 <div class="form-group">

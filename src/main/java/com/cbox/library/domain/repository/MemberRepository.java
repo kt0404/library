@@ -24,11 +24,11 @@ public class MemberRepository {
         return jdbc.queryForList(sql);
     }
 
-    public Map<String, Object> findOne(int id) {
-        String sql = "SELECT * FROM member WHERE id = ?";
+    public Map<String, Object> findOne(int memberId) {
+        String sql = "SELECT * FROM member WHERE member_id = ?";
         Map<String, Object> result;
         try {
-            result = jdbc.queryForMap(sql, id);
+            result = jdbc.queryForMap(sql, memberId);
         } catch (IncorrectResultSizeDataAccessException e) {
             result = null;
         }
@@ -36,7 +36,7 @@ public class MemberRepository {
     }
 
     public int updateDiscription(int memberId, String discription) {
-        String sql = "UPDATE member SET discription = :discription WHERE id = :memberId";
+        String sql = "UPDATE member SET discription = :discription WHERE member_id = :memberId";
         return namedJdbc.update(sql, new MapSqlParameterSource()
                 .addValue("discription", discription)
                 .addValue("memberId", memberId));

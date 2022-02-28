@@ -34,12 +34,12 @@ public class MemberDeleteRequestService {
         return memberDeleteRequestRepository.create(memberId, deleteReason, userAgent, ipAddress);
     }
     
-    public DeleteRequest findById(int id) {
-        return memberDeleteRequestMapper.findById(id);
+    public DeleteRequest findByDeleteRequestId(int deleteRequestId) {
+        return memberDeleteRequestMapper.findByDeleteRequestId(deleteRequestId);
     }
     
-    public DeleteRequest findByIdWithMemberName(int id) {
-        return memberDeleteRequestMapper.findByIdWithMemberName(id);
+    public DeleteRequest findByDeleteRequestIdWithMemberName(int deleteRequestId) {
+        return memberDeleteRequestMapper.findByDeleteRequestIdWithMemberName(deleteRequestId);
     }
     
     public List<DeleteRequest> findAllByDeleteFlag(int deleteFlag) {
@@ -47,7 +47,7 @@ public class MemberDeleteRequestService {
         List<DeleteRequest> result = new ArrayList<>();
         for (Map<String, Object> map : tmpList) {
             DeleteRequest request = new DeleteRequest();
-            request.setId((Integer) map.get("id"));
+            request.setDeleteRequestId((Integer) map.get("delete_request_id"));
             request.setMemberId((Integer) map.get("member_id"));
             request.setDeleteReason((String) map.get("delete_reason"));
             request.setUserAgent((String) map.get("user_agent"));

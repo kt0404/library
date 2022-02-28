@@ -16,8 +16,8 @@ public class MemberService {
     @Autowired
     MemberMapper memberMapper;
 
-	public Member findById(int id) {
-	    List<Member> list = memberMapper.find(id);
+	public Member findByMemberId(int memberId) {
+	    List<Member> list = memberMapper.find(memberId);
 	    Member member = list.get(0);
 		return member;
 	}
@@ -34,14 +34,14 @@ public class MemberService {
 		return memberMapper.create(name, furigana, boardId, discription);
 	}
 	
-	public boolean updateNameAndFuriganaAndBoardIdAndDiscriptionById(String name, String furigana, Integer boardId, String discription, Integer id) {
-	    return memberMapper.update(name, furigana, boardId, discription, id);
+	public boolean updateNameAndFuriganaAndBoardIdAndDiscriptionByMemberId(String name, String furigana, Integer boardId, String discription, Integer memberId) {
+	    return memberMapper.update(name, furigana, boardId, discription, memberId);
 	}
 	
 	public boolean updateDiscription(MemberUpdateRequestForm form) {
-	    int id = form.getMemberId();
+	    int memberId = form.getMemberId();
 	    String discription = form.getDiscription();
-	    return memberMapper.update(null, null, null, discription, id);
+	    return memberMapper.update(null, null, null, discription, memberId);
 	}
 	
 }

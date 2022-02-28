@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Board {
 	
-	private Integer id;
+	private Integer boardId;
 	
 	private String name;
 	
@@ -12,12 +12,12 @@ public class Board {
 	
 	private Timestamp updatedAt;
 
-	public Integer getId() {
-		return id;
+	public Integer getBoardId() {
+		return boardId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setBoardId(Integer boardId) {
+		this.boardId = boardId;
 	}
 
 	public String getName() {

@@ -30,9 +30,9 @@ public class MemberDeleteRequestController {
     @Autowired
     RequestService requestService;
     
-    @GetMapping("/delete/{id}")
-    public String deleteRequestForm(@PathVariable int id, Model model) {
-        Member member = memberService.findById(id);
+    @GetMapping("/delete/{memberId}")
+    public String deleteRequestForm(@PathVariable int memberId, Model model) {
+        Member member = memberService.findByMemberId(memberId);
         model.addAttribute("member", member);
         model.addAttribute("memberDeleteRequestForm", new MemberDeleteRequestForm());
         return "delete";

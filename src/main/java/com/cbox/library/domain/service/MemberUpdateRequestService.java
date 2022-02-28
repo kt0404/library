@@ -38,8 +38,8 @@ public class MemberUpdateRequestService {
         return memberUpdateRequestRepository.create(memberId, name, furigana, boardId, discription, userAgent, ipAdress);
     }
     
-    public UpdateRequest findById(int updateRequestId) {
-        return memberUpdateRequestMapper.findByid(updateRequestId);
+    public UpdateRequest findByUpdateRequestId(int updateRequestId) {
+        return memberUpdateRequestMapper.findByUpdateRequestId(updateRequestId);
     }
     
     public List<UpdateRequest> findAllByDeleteFlag(int deleteFlag) {
@@ -47,7 +47,7 @@ public class MemberUpdateRequestService {
         List<UpdateRequest> result = new ArrayList<>();
         for (Map<String, Object> map : tmpList) {
             UpdateRequest request = new UpdateRequest();
-            request.setId((Integer) map.get("id"));
+            request.setUpdateRequestId((Integer) map.get("update_request_id"));
             request.setMemberId((Integer) map.get("member_id"));
             request.setName((String) map.get("name"));
             request.setFurigana((String) map.get("furigana"));
@@ -71,18 +71,18 @@ public class MemberUpdateRequestService {
     }
     
     public boolean acceptUpdateRequest(int updateRequestId) {
-        UpdateRequest updateRequet = memberUpdateRequestMapper.findByid(updateRequestId);
+        UpdateRequest updateRequet = memberUpdateRequestMapper.findByUpdateRequestId(updateRequestId);
         String name = updateRequet.getName();
         String furigana = updateRequet.getFurigana();
         int boardId = updateRequet.getBoardId();
         String discription = updateRequet.getDiscription();
         int memberId = updateRequet.getMemberId();
         memberMapper.update(name, furigana, boardId, discription, memberId);
-        return memberUpdateRequestMapper.updateDeleteFlagById(Constants.Request.FLAG_PROCESSED, updateRequestId);
+        return memberUpdateRequestMapper.updateDeleteFlagByUpdateRequestId(Constants.Request.FLAG_PROCESSED, updateRequestId);
     }
     
     public boolean refuseUpdateRequest(int updateRequestId) {
-        return memberUpdateRequestMapper.updateDeleteFlagById(Constants.Request.FLAG_PROCESSED, updateRequestId);
+        return memberUpdateRequestMapper.updateDeleteFlagByUpdateRequestId(Constants.Request.FLAG_PROCESSED, updateRequestId);
     }
     
 }

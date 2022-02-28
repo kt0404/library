@@ -23,7 +23,7 @@ public class CommentService {
 		List<Comment> result = new ArrayList<>();
 		for (Map<String, Object> map : tmpList) {
 			Comment comment = new Comment();
-			comment.setId((Integer) map.get("id"));
+			comment.setCommentId((Integer) map.get("comment_id"));
 			comment.setMemberId((Integer) map.get("member_Id"));
 			comment.setComment((String) map.get("comment"));
 			comment.setUserAgent((String) map.get("user_agent"));

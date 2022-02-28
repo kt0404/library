@@ -21,16 +21,16 @@ public class BoardService {
 	@Autowired
 	private BoardRepository boardRepository;
 	
-	public Board findById(int id) {
-	    return boardMapper.findById(id);
+	public Board findByBoardId(int boardId) {
+	    return boardMapper.findByBoardId(boardId);
 	}
 
 	public List<Board> getAll() {
-		List<Map<String, Object>> tmpList = boardRepository.getAllOrderById();
+		List<Map<String, Object>> tmpList = boardRepository.getAllOrderByBoardId();
 		List<Board> result = new ArrayList<>();
 		for (Map<String, Object> map : tmpList) {
 			Board board = new Board();
-			board.setId((Integer) map.get("id"));
+			board.setBoardId((Integer) map.get("board_id"));
 			board.setName((String) map.get("name"));
 			board.setCreatedAt((Timestamp) map.get("created_at"));
 			board.setUpdatedAt((Timestamp) map.get("updated_at"));

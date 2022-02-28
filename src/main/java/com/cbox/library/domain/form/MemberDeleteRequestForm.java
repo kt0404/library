@@ -7,7 +7,7 @@ public class MemberDeleteRequestForm implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
-    private int id;
+    private int deleteRequestId;
 
     private int memberId;
     
@@ -21,12 +21,12 @@ public class MemberDeleteRequestForm implements Serializable {
     
     private int deleteFlag;
 
-    public int getId() {
-        return id;
+    public int getDeleteRequestId() {
+        return deleteRequestId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDeleteRequestId(int deleteRequestId) {
+        this.deleteRequestId = deleteRequestId;
     }
 
     public int getMemberId() {

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Comment {
 	
-	private Integer id;
+	private Integer commentId;
 	
 	private Integer memberId;
 	
@@ -16,12 +16,12 @@ public class Comment {
 	
 	private LocalDate createdAt;
 
-	public Integer getId() {
-		return id;
+	public Integer getCommentId() {
+		return commentId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setCommentId(Integer commentId) {
+		this.commentId = commentId;
 	}
 
 	public Integer getMemberId() {

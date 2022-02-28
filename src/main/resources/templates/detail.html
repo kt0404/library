@@ -41,7 +41,7 @@
 				<div class="card-body">
 					<div class="row justify-content-center mb-4">
 						<form th:action="@{/comment}" th:object="${commentForm}" method="POST">
-							<input type="hidden" name="memberId" th:value="${member.id}"></hidden>
+							<input type="hidden" name="memberId" th:value="${member.memberId}"></hidden>
 							<div class="form-group">
 								<label for="discription">コメント</label><br />
 								<textarea class="form-control"　id="comment" name="comment" cols="30" rows="6"></textarea>

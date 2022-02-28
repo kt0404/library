@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>
                     <tr  th:each="update : ${updateList}">
-                        <td><a th:href="@{'/process/update/request/' + ${update.id}}"><span th:text="${update.id}">nodata</span></a></td>
+                        <td><a th:href="@{'/process/update/request/' + ${update.updateRequestId}}"><span th:text="${update.updateRequestId}">nodata</span></a></td>
                         <td><a th:href="@{'/detail/' + ${update.memberId}}"><span th:text="${update.beforeName}">nodata</span></a></td>
                         <td><span th:text="${update.createdAt}">nodata</span></td>
                     </tr>
@@ -53,7 +53,7 @@
                 </thead>
                 <tbody>
                     <tr  th:each="delete : ${deleteList}">
-                        <td><a th:href="@{'/process/delete/request/' + ${delete.id}}"><span th:text="${delete.id}">nodata</span></a></td>
+                        <td><a th:href="@{'/process/delete/request/' + ${delete.deleteRequestId}}"><span th:text="${delete.deleteRequestId}">nodata</span></a></td>
                         <td><a th:href="@{'/detail/' + ${delete.memberId}}"><span th:text="${delete.memberName}">nodata</span></a></td>
                         <td><span th:text="${delete.createdAt}">nodata</span></td>
                     </tr>

@@ -28,10 +28,10 @@ public class ProcessMemberUpdateRequestController {
     
     @GetMapping("/process/update/request/{updateRequestId}")
     public String processMemberUpdateRequestForm(@PathVariable int updateRequestId, Model model) {
-        UpdateRequest updateRequest = memberUpdateRequestService.findById(updateRequestId);
-        Member member = memberService.findById(updateRequest.getMemberId());
-        Board beforeBoard = boardService.findById(member.getBoardId());
-        Board afterBoard = boardService.findById(updateRequest.getBoardId());
+        UpdateRequest updateRequest = memberUpdateRequestService.findByUpdateRequestId(updateRequestId);
+        Member member = memberService.findByMemberId(updateRequest.getMemberId());
+        Board beforeBoard = boardService.findByBoardId(member.getBoardId());
+        Board afterBoard = boardService.findByBoardId(updateRequest.getBoardId());
         model.addAttribute("updateRequest", updateRequest);
         model.addAttribute("member", member);
         model.addAttribute("beforeBoard", beforeBoard);

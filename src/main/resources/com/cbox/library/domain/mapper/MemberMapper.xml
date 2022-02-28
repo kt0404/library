@@ -6,8 +6,8 @@
     <select id="find" resultType="Member">
         SELECT * FROM member
         <where>
-            <if test="id != null">
-                AND id = #{id}
+            <if test="memberId != null">
+                AND member_id = #{memberId}
             </if>
         </where>
         ORDER BY furigana
@@ -37,8 +37,8 @@
                 updated_at = now()
         </set>
         <where>
-            <if test="id != null">
-                AND id = #{id}
+            <if test="memberId != null">
+                AND member_id = #{memberId}
             </if>
         </where>
     </update>

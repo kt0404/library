@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class DeleteRequest {
     
-    private Integer id;
+    private Integer deleteRequestId;
     
     private Integer memberId;
     
@@ -20,12 +20,12 @@ public class DeleteRequest {
     
     private Integer deleteFlag;
 
-    public Integer getId() {
-        return id;
+    public Integer getDeleteRequestId() {
+        return deleteRequestId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setDeleteRequestId(Integer deleteRequestId) {
+        this.deleteRequestId = deleteRequestId;
     }
 
     public Integer getMemberId() {

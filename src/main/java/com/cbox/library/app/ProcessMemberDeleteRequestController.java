@@ -34,9 +34,9 @@ public class ProcessMemberDeleteRequestController {
     
     @GetMapping("/process/delete/request/{deleteRequestId}")
     public String processMemberDeleteRequestForm(@PathVariable int deleteRequestId, Model model) {
-        DeleteRequest deleteRequest = memberDeleteRequestService.findById(deleteRequestId);
-        Member member = memberService.findById(deleteRequest.getMemberId());
-        Board board = boardService.findById(member.getBoardId());
+        DeleteRequest deleteRequest = memberDeleteRequestService.findByDeleteRequestId(deleteRequestId);
+        Member member = memberService.findByMemberId(deleteRequest.getMemberId());
+        Board board = boardService.findByBoardId(member.getBoardId());
         model.addAttribute("deleteRequest", deleteRequest);
         model.addAttribute("member", member);
         model.addAttribute("board", board);
@@ -46,13 +46,13 @@ public class ProcessMemberDeleteRequestController {
     
     @PostMapping("/accept/delete/request")
     public String acceptDeleteRequest(@Validated MemberDeleteRequestForm form) {
-        processMemberDeleteRequestService.execute(form.getMemberId(), form.getId());
+        processMemberDeleteRequestService.execute(form.getMemberId(), form.getDeleteRequestId());
         return "redirect:/show";
     }
     
     @PostMapping("/refuse/delete/request")
     public String refuseDeleteRequest(@Validated MemberDeleteRequestForm form) {
-        processMemberDeleteRequestService.refuseMemberDeleteRequest(form.getId());
+        processMemberDeleteRequestService.refuseMemberDeleteRequest(form.getDeleteRequestId());
         return "redirect:/show";
     }
     
