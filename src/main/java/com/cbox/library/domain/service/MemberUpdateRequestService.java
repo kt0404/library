@@ -19,6 +19,7 @@ import com.cbox.library.domain.repository.MemberUpdateRequestRepository;
 @Service
 @Transactional
 public class MemberUpdateRequestService {
+    
     @Autowired
     MemberUpdateRequestRepository memberUpdateRequestRepository;
     
@@ -83,4 +84,5 @@ public class MemberUpdateRequestService {
     public boolean refuseUpdateRequest(int updateRequestId) {
         return memberUpdateRequestMapper.updateDeleteFlagById(Constants.Request.FLAG_PROCESSED, updateRequestId);
     }
+    
 }

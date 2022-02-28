@@ -39,4 +39,5 @@ public class CommentService {
 		String comment = form.getComment();
 		commentRepository.create(memberId, comment, userAgent, ipAddress);
 	}
+	
 }

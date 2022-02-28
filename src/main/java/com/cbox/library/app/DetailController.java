@@ -23,7 +23,7 @@ public class DetailController {
     CommentService commentService;
 
     @GetMapping("/detail/{id}")
-    public String detail(@PathVariable int id, Model model) {
+    public String detailForm(@PathVariable int id, Model model) {
         Member member = memberService.findById(id);
         if (member == null)
             return "redirect:/show";
@@ -32,4 +32,5 @@ public class DetailController {
         model.addAttribute("commentList", commentList);
         return "detail";
     }
+    
 }

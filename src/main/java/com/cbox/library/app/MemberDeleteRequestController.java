@@ -20,6 +20,7 @@ import com.cbox.library.domain.service.MemberService;
 
 @Controller
 public class MemberDeleteRequestController {
+    
     @Autowired
     MemberService memberService;
     
@@ -30,7 +31,7 @@ public class MemberDeleteRequestController {
     RequestService requestService;
     
     @GetMapping("/delete/{id}")
-    public String deleteRequestCreate(@PathVariable int id, Model model) {
+    public String deleteRequestForm(@PathVariable int id, Model model) {
         Member member = memberService.findById(id);
         model.addAttribute("member", member);
         model.addAttribute("memberDeleteRequestForm", new MemberDeleteRequestForm());
@@ -45,4 +46,5 @@ public class MemberDeleteRequestController {
         memberDeleteRequestService.create(form, userAgent, ipAddress);
         return "redirect:/show";
     }
+    
 }

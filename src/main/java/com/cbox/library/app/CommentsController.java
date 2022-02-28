@@ -15,7 +15,7 @@ import com.cbox.library.domain.service.RequestService;
 
 @Controller
 public class CommentsController {
-//conto
+
     @Autowired
     CommentService commentService;
 
@@ -31,4 +31,5 @@ public class CommentsController {
         commentService.create(form, userAgent, ipAddress);
         return "redirect:/detail/" + form.getMemberId();
     }
+    
 }

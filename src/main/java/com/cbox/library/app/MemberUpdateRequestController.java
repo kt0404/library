@@ -24,6 +24,7 @@ import com.cbox.library.domain.service.MemberUpdateRequestService;
 
 @Controller
 public class MemberUpdateRequestController {
+    
     @Autowired
     MemberService memberService;
     
@@ -37,7 +38,7 @@ public class MemberUpdateRequestController {
     MemberUpdateRequestService memberUpdateRequestService;
     
     @GetMapping("/update/{id}")
-    public String memberUpdateRequest(@PathVariable int id, Model model) {
+    public String memberUpdateRequestForm(@PathVariable int id, Model model) {
         Member member = memberService.findById(id);
         List<Board> boardList = boardService.getAll();
         model.addAttribute("member", member);
@@ -53,4 +54,5 @@ public class MemberUpdateRequestController {
         memberUpdateRequestService.create(form, userAgent, ipAddress);
         return "redirect:/show";
     }
+    
 }

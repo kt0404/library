@@ -10,6 +10,7 @@ import com.cbox.library.domain.model.DeleteRequest;
 
 @Mapper
 public interface MemberDeleteRequestMapper {
+    
     @Select("SELECT id, member_id AS memberId, delete_reason AS deleteReason, user_agent AS userAgent, ip_address AS ipAddress, created_at AS createdAt, delete_flag AS deleteFlag FROM delete_request WHERE id = #{id}")
     public DeleteRequest findById(int id);
     
@@ -24,4 +25,5 @@ public interface MemberDeleteRequestMapper {
     
     @Update("UPDATE delete_request SET delete_flag = #{deleteFlag} WHERE member_id = #{memberId}")
     public boolean updateDeleteFlagByMemberId(int memberId, int deleteFlag);
+    
 }

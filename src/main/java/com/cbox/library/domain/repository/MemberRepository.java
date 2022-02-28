@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemberRepository {
+    
     @Autowired
     private JdbcTemplate jdbc;
 
@@ -40,4 +41,5 @@ public class MemberRepository {
                 .addValue("discription", discription)
                 .addValue("memberId", memberId));
     }
+    
 }

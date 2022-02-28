@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemberDeleteRequestRepository {
+    
     @Autowired
     JdbcTemplate jdbc;
     
@@ -36,4 +37,5 @@ public class MemberDeleteRequestRepository {
         String sql = "SELECT * FROM delete_request WHERE delete_flag = ?";
         return jdbc.queryForList(sql, deleteFlag);
     }
+    
 }

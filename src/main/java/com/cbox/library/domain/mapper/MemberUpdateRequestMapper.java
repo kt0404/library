@@ -11,6 +11,7 @@ import com.cbox.library.domain.model.UpdateRequest;
 
 @Mapper
 public interface MemberUpdateRequestMapper {
+    
     @Select("SELECT id, member_id AS memberId, name, furigana, board_id AS boardId, discription, user_agent AS userAgent, ip_address AS ipAddress, created_at AS createdAt, delete_flag AS deleteFlag FROM update_request WHERE id = #{updateRequestId}")
     public UpdateRequest findByid(int updateRequestId);
     
@@ -20,4 +21,5 @@ public interface MemberUpdateRequestMapper {
     public List<UpdateRequest> find(@Param("id") Integer id, @Param("deleteFlag") Integer deleteFlag);
     
     public boolean updateDeleteFlagById(@Param("deleteFlag") int deleteFlag, @Param("id") int id);
+    
 }

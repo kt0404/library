@@ -12,6 +12,7 @@ import com.cbox.library.domain.mapper.MemberUpdateRequestMapper;
 @Service
 @Transactional
 public class ProcessMemberDeleteRequestService {
+    
     @Autowired
     MemberMapper memberMapper;
     
@@ -30,4 +31,5 @@ public class ProcessMemberDeleteRequestService {
     public void refuseMemberDeleteRequest(int requestId) {
         memberDeleteRequestMapper.updateDeleteFlagById(requestId, Constants.Request.FLAG_PROCESSED);
     }
+    
 }

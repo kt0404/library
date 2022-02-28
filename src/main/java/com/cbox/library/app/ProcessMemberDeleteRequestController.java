@@ -19,6 +19,7 @@ import com.cbox.library.domain.service.ProcessMemberDeleteRequestService;
 
 @Controller
 public class ProcessMemberDeleteRequestController {
+    
     @Autowired
     MemberService memberService;
     
@@ -31,8 +32,8 @@ public class ProcessMemberDeleteRequestController {
     @Autowired
     BoardService boardService;
     
-    @GetMapping("/delete/request/process/{deleteRequestId}")
-    public String index(@PathVariable int deleteRequestId, Model model) {
+    @GetMapping("/process/delete/request/{deleteRequestId}")
+    public String processMemberDeleteRequestForm(@PathVariable int deleteRequestId, Model model) {
         DeleteRequest deleteRequest = memberDeleteRequestService.findById(deleteRequestId);
         Member member = memberService.findById(deleteRequest.getMemberId());
         Board board = boardService.findById(member.getBoardId());
@@ -43,15 +44,16 @@ public class ProcessMemberDeleteRequestController {
         return "delete_request_detail";
     }
     
-    @PostMapping("/delete/request/accept")
+    @PostMapping("/accept/delete/request")
     public String acceptDeleteRequest(@Validated MemberDeleteRequestForm form) {
         processMemberDeleteRequestService.execute(form.getMemberId(), form.getId());
         return "redirect:/show";
     }
     
-    @PostMapping("/delete/request/refuse")
+    @PostMapping("/refuse/delete/request")
     public String refuseDeleteRequest(@Validated MemberDeleteRequestForm form) {
         processMemberDeleteRequestService.refuseMemberDeleteRequest(form.getId());
         return "redirect:/show";
     }
+    
 }

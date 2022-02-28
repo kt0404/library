@@ -3,6 +3,7 @@ package com.cbox.library.domain.model;
 import java.sql.Timestamp;
 
 public class DeleteRequest {
+    
     private Integer id;
     
     private Integer memberId;
@@ -82,4 +83,5 @@ public class DeleteRequest {
     public void setDeleteFlag(Integer deleteFlag) {
         this.deleteFlag = deleteFlag;
     }
+    
 }

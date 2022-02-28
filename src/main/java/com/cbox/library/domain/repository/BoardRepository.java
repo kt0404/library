@@ -17,4 +17,5 @@ public class BoardRepository {
 		String sql = "SELECT * FROM board ORDER BY id";
 		return jdbc.queryForList(sql);
 	}
+	
 }

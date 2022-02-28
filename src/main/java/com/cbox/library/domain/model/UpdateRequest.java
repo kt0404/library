@@ -3,6 +3,7 @@ package com.cbox.library.domain.model;
 import java.sql.Timestamp;
 
 public class UpdateRequest {
+    
     private Integer id;
     
     private Integer memberId;
@@ -112,4 +113,5 @@ public class UpdateRequest {
     public void setBeforeName(String beforeName) {
         this.beforeName = beforeName;
     }
+    
 }

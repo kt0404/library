@@ -12,6 +12,7 @@ import com.cbox.library.domain.model.Member;
 
 @Service
 public class MemberService {
+    
     @Autowired
     MemberMapper memberMapper;
 
@@ -42,4 +43,5 @@ public class MemberService {
 	    String discription = form.getDiscription();
 	    return memberMapper.update(null, null, null, discription, id);
 	}
+	
 }

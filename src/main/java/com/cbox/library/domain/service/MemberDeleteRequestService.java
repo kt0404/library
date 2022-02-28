@@ -18,6 +18,7 @@ import com.cbox.library.domain.repository.MemberDeleteRequestRepository;
 @Service
 @Transactional
 public class MemberDeleteRequestService {
+    
     @Autowired
     MemberDeleteRequestRepository memberDeleteRequestRepository;
     
@@ -61,4 +62,5 @@ public class MemberDeleteRequestService {
     public List<DeleteRequest> findAllByDeleteFlagWithMemberName(int deleteFlag) {
         return memberDeleteRequestMapper.findAllByDeleteFlagWithMemberName(deleteFlag);
     }
+    
 }

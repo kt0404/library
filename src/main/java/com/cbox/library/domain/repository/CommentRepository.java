@@ -28,4 +28,5 @@ public class CommentRepository {
 				.addValue("userAgent", userAgent)
 				.addValue("ipAddress", ipAddress));
 	}
+	
 }

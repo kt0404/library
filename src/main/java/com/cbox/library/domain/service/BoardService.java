@@ -14,6 +14,7 @@ import com.cbox.library.domain.repository.BoardRepository;
 
 @Service
 public class BoardService {
+    
     @Autowired
     private BoardMapper boardMapper;
 
@@ -37,4 +38,5 @@ public class BoardService {
 		}
 		return result;
 	}
+	
 }

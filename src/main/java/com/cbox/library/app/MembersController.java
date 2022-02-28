@@ -50,4 +50,5 @@ public class MembersController {
         model.addAttribute("boardList", boardList);
         return "redirect:/show";
     }
+    
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 public class MemberDeleteRequestForm implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     
     private int id;
@@ -75,4 +76,5 @@ public class MemberDeleteRequestForm implements Serializable {
     public void setDeleteFlag(int deleteFlag) {
         this.deleteFlag = deleteFlag;
     }
+    
 }

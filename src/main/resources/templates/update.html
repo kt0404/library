@@ -18,6 +18,17 @@
                 <span class="title">C-BOX Library</span>
             </div>
         </a>
+        
+        <div class="justify-content-center mb-2" th:if="${#authorization.expression('!isAuthenticated()')}">
+            <a th:href="@{/login}">ログイン</a>
+        </div>
+        
+        <div class="justify-content-center mb-2" th:if="${#authorization.expression('isAuthenticated()')}">
+            <span th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</span>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+        </div>
     </nav>
     
     <div class="container mt-3">

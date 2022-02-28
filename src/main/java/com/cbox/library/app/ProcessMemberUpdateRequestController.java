@@ -16,6 +16,7 @@ import com.cbox.library.domain.service.MemberUpdateRequestService;
 
 @Controller
 public class ProcessMemberUpdateRequestController {
+    
     @Autowired
     MemberService memberService;
     
@@ -25,8 +26,8 @@ public class ProcessMemberUpdateRequestController {
     @Autowired
     BoardService boardService;
     
-    @GetMapping("/update/request/process/{updateRequestId}")
-    public String index(@PathVariable int updateRequestId, Model model) {
+    @GetMapping("/process/update/request/{updateRequestId}")
+    public String processMemberUpdateRequestForm(@PathVariable int updateRequestId, Model model) {
         UpdateRequest updateRequest = memberUpdateRequestService.findById(updateRequestId);
         Member member = memberService.findById(updateRequest.getMemberId());
         Board beforeBoard = boardService.findById(member.getBoardId());
@@ -38,15 +39,16 @@ public class ProcessMemberUpdateRequestController {
         return "update_request_detail";
     }
     
-    @PostMapping("/update/request/accept/{updateRequestId}")
+    @PostMapping("/accept/update/request/{updateRequestId}")
     public String acceptUpdateRequest(@PathVariable int updateRequestId) {
         memberUpdateRequestService.acceptUpdateRequest(updateRequestId);
         return "redirect:/show";
     }
     
-    @PostMapping("/update/request/refuse/{updateRequestId}")
+    @PostMapping("/refuse/update/request/{updateRequestId}")
     public String refuseUpdateRequest(@PathVariable int updateRequestId) {
         memberUpdateRequestService.refuseUpdateRequest(updateRequestId);
         return "redirect:/show";
     }
+    
 }

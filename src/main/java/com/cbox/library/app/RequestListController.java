@@ -16,6 +16,7 @@ import com.cbox.library.domain.service.MemberUpdateRequestService;
 
 @Controller
 public class RequestListController {
+    
     @Autowired
     MemberUpdateRequestService memberUpdateRequestService;
     
@@ -34,4 +35,5 @@ public class RequestListController {
         model.addAttribute("deleteList", deleteList);
         return "request_list";
     }
+    
 }

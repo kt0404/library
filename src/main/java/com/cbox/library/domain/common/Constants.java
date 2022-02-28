@@ -1,6 +1,7 @@
 package com.cbox.library.domain.common;
 
 public final class Constants {
+    
     private Constants() {}
     
     public static class Request {
@@ -8,4 +9,5 @@ public final class Constants {
         
         public static final int FLAG_PROCESSED = 1;
     }
+    
 }

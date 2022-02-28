@@ -12,13 +12,25 @@
 </head>
 <body>
 	<nav class="navbar navbar-light bg-secondary">
-		<a th:href="@{/}" class="nav-item nav-link text-light">
-			<div>
-				<img th:src="@{/images/library.png}" height="30" width="30" />
-				<span class="title">C-BOX Library</span>
-			</div>
-		</a>
-	</nav>
+        <a th:href="@{/}" class="nav-item nav-link text-light">
+            <div>
+                <img th:src="@{/images/library.png}" height="30" width="30" />
+                <span class="title">C-BOX Library</span>
+            </div>
+        </a>
+        
+        <div class="justify-content-center mb-2" th:if="${#authorization.expression('!isAuthenticated()')}">
+            <a th:href="@{/login}">ログイン</a>
+        </div>
+        
+        <div class="justify-content-center mb-2" th:if="${#authorization.expression('isAuthenticated()')}">
+            <span th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</span>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+        </div>
+    </nav>
+    
 	<div class="container mt-3">
 		<div class="row justify-content-center">
 			<form th:action="@{/register}" th:object="${registerForm}" method="POST">

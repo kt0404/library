@@ -63,4 +63,5 @@ public class Comment {
 	public void setCreatedAt(LocalDate createdAt) {
 		this.createdAt = createdAt;
 	}
+	
 }

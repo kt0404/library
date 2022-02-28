@@ -6,7 +6,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class MemberUpdateRequestForm implements Serializable {
+    
     private static final long serialVersionUID = 1L;
+    
     @NotNull
     private int memberId;
     
@@ -63,4 +65,5 @@ public class MemberUpdateRequestForm implements Serializable {
     public void setDiscription(String discription) {
         this.discription = discription;
     }
+    
 }
