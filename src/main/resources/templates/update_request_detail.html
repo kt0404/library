@@ -23,7 +23,7 @@
         <div class="row justify-content-center">
             <div class="col-12">名前 : <span th:text="${member.name}">nodata</span>→<span th:text="${updateRequest.name}">nodata</span></div>
             <div class="col-12">ふりがな : <span th:text="${member.furigana}">nodata</span>→<span th:text="${updateRequest.furigana}">nodata</span></div>
-            <div class="col-12">板 : <span th:text="${beforeBoard.name}">nodata</span>→<span th:text="${afterBoard.name}">nodata</span></div>
+            <div class="col-12">出身 : <span th:text="${beforeBoard.name}">nodata</span>→<span th:text="${afterBoard.name}">nodata</span></div>
             <div class="col-12">情報 : <span th:text="${member.discription}">nodata</span>→<span th:text="${updateRequest.discription}">nodata</span></div>
             <form th:action="@{'/show'}" method="POST">
                 <button type="submit" th:formaction="@{'/accept/update/request/'} + ${updateRequest.updateRequestId}"  class="btn btn-primary">accept</button>

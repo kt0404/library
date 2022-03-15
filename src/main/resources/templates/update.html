@@ -44,7 +44,7 @@
                     <input type="text" class=”form-control” id="furigana" name="furigana" th:value="${member.furigana}" />
                 </div>
                 <div class="form-group">
-                    <label for="furigana">板</label><br />
+                    <label for="furigana">出身</label><br />
                     <select name="boardId">
                         <option th:each="board : ${boardList}" th:value="${board.boardId}" th:selected="${board.boardId} == ${member.boardId}">[[${board.name}]]</option>
                     </select>

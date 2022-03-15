@@ -23,7 +23,7 @@
         <div class="row justify-content-center">
             <div class="col-12">名前 : <span th:text="${member.name}">nodata</span></div>
             <div class="col-12">ふりがな : <span th:text="${member.furigana}">nodata</span></div>
-            <div class="col-12">板 : <span th:text="${board.name}">nodata</span></div>
+            <div class="col-12">出身 : <span th:text="${board.name}">nodata</span></div>
             <div class="col-12">情報 : <span th:text="${member.discription}">nodata</span></div>
             <div class="col-12">削除理由 : <span th:text="${deleteRequest.deleteReason}">nodata</span></div>
             <form th:action="@{'/show'}" th:object="${memberDeleteRequestForm}" method="POST">
