@@ -35,7 +35,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		        "/update/**",
 		        "/request/list"
 		        ).permitAll().anyRequest().authenticated();
+		
 		http.formLogin().loginPage("/login").permitAll();
+		
 		http.logout().logoutSuccessUrl("/").permitAll();
 	}
 	
